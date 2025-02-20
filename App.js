@@ -1,7 +1,21 @@
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+import { FlatList } from 'react-native-web';
 
 
 export default function App() {
+
+  const data = [{
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "React Native Lab"
+  }, {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: " Spervesion Metting"
+  },
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28bH",
+    title: "Watch A movie"
+  },
+]
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container} >
@@ -23,11 +37,17 @@ export default function App() {
             <Text>Done</Text>
           </TouchableOpacity>
         </View>
-        <View>
-          <TextInput style={styles.iteminput} placeholder='First Item'></TextInput>
-          <TextInput style={styles.iteminput} placeholder='Second Item'></TextInput>
 
-        </View>
+        <FlatList data={data} keyExtractor={item => item.id} renderItem={({ item }) => {
+         return <View>
+            <Text style={styles.iteminput}>{item.title}</Text>
+          </View>
+
+        }} >
+        </FlatList>
+
+
+
       </View>
     </SafeAreaView>
   );
